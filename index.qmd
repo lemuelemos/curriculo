@@ -21,8 +21,9 @@ cv <- googlesheets4::read_sheet(cv_url)
 ```
 
 ::: columns
-::: {.column width="25%"}
-<center><a href='https://beamilz.com' target='_blank'> ![](https://avatars.githubusercontent.com/u/17839354?v=4){width="80%" style="border-radius: 50%;"}</center>
+::: {.column id="sidebar" width="30%"}
+<center><a href='https://beamilz.com' target='_blank'> ![](https://avatars.githubusercontent.com/u/17839354?v=4){width="80%" style="border-radius: 50%;
+padding-top: 5px;"}</center>
 
 </a>
 
@@ -57,10 +58,10 @@ cv <- googlesheets4::read_sheet(cv_url)
 <!-- <i class="fab fa-r-project"></i> `R` <br> <i class="fa fa-area-chart" aria-hidden="true"></i> `tidyverse` <br> <i class="fab fa-markdown"></i> `RMarkdown / Quarto` <br> <i class="fas fa-code-branch"></i> `Git` <br> <i class="fab fa-github"></i> `GitHub` <br> <i class="fab fa-markdown"></i> `Markdown` <br> <i class="fab fa-html5"></i> `HTML` <br> <i class="fab fa-css3-alt"></i> `CSS` <br> -->
 :::
 
-::: {.column width="5%"}
+::: {.column width="2%"}
 :::
 
-::: {.column width="70%"}
+::: {.column width="68%"}
 <!-- Functions -->
 
 ```{r}
