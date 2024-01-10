@@ -132,7 +132,7 @@ create_section <- function(cv_data, section_name){
 Currículo feito com o  [Quarto](https://quarto.org/). Última Atualização em `r format.Date(Sys.Date(), "%b %d, %Y")`. 
 <br> 
 Código Disponível em <i class="fa-brands fa-github"></i> 
-[GitHub](https://github.com/lemuelemos/cv/index.qmd). 
+[GitHub](https://github.com/lemuelemos/cv/blob/main/index.qmd). 
 <br>
 License: [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/).
 </p>
