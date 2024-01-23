@@ -55,7 +55,7 @@ dados_cv <- read_delim("dados_cv.csv", delim = ";",
 <!-- Functions -->
 
 <!-- Main content -->
-# Lemuel de Lemos Romão
+# Lemuel de Lemos Romão 
 ## <i class="fa-solid fa-suitcase"></i> Experiência Profissional
 
 ```{r}
