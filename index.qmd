@@ -4,6 +4,7 @@ format:
   html:
     theme: journal
     css: custom.css
+    title: "Curriculo"
 editor: visual
 knitr:
   opts_chunk: 
@@ -27,12 +28,12 @@ dados_cv <- read_delim("dados_cv.csv", delim = ";",
 ::: columns
 ::: {#sidebar .column width="30%"}
 <center><a href='https://www.linkedin.com/in/lemuelemos/' target='_blank'> ![](https://avatars.githubusercontent.com/u/17839354?v=4){width="80%" style="border-radius: 50%; padding-top: 5px;"}</center>
+
 </a>
 
 <center><span style="font-size: 1.5em;"> <a href='https://github.com/lemuelemos' target='_blank'><i class="fa-brands fa-github"></i></a> <a href='mailto:lemuelemos@gmail.com'><i class="fa fa-envelope"></i></a> <a href='https://www.linkedin.com/in/lemuelemos/' target='_blank'><i class="fa-brands fa-linkedin-in"></i></a></center>
 
-</span>
-Olá, eu sou o **Lemuel!** Atualmente, exerço a função de **líder operacional** (Head Operacional) em um escritório de assessoria de investimentos. Na prática, isso significa que sou responsável por uma equipe de duas pessoas no **backoffice** e encarregado de gerenciar os dados, desde o [ETL]{style="text-decoration: underline;"} até o processo de transformar números em [relatórios]{style="text-decoration: underline;"} nos mais diversos [formatos]{style="text-decoration: underline;"}. Se precisar de alguém para dar um toque de criatividade nos dados e se tornar seu **faxineiro de dados (data janitor)**, estou aqui!
+</span> Olá, eu sou o **Lemuel!** Atualmente, exerço a função de **líder operacional** (Head Operacional) em um escritório de assessoria de investimentos. Na prática, isso significa que sou responsável por uma equipe de duas pessoas no **backoffice** e encarregado de gerenciar os dados, desde o [ETL]{style="text-decoration: underline;"} até o processo de transformar números em [relatórios]{style="text-decoration: underline;"} nos mais diversos [formatos]{style="text-decoration: underline;"}. Se precisar de alguém para dar um toque de criatividade nos dados e se tornar seu **faxineiro de dados (data janitor)**, estou aqui!
 
 ### Languages
 
