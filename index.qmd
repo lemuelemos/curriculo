@@ -17,6 +17,8 @@ knitr:
 #| cache: false
 library(readr)
 library(dplyr)
+library(bs4Dash)
+library(shiny)
 dados_cv <- read_delim("dados_cv.csv", delim = ";", 
                        escape_double = FALSE, locale = locale(encoding = "WINDOWS-1252"), 
                        trim_ws = TRUE)
@@ -104,24 +106,24 @@ create_section <- function(cv_data, section_name){
 ## <i class="fa-solid fa-suitcase"></i> Experiência Profissional
 
 ```{r}
-dados_cv %>% 
-  dplyr::filter(secao == "profissional") %>% 
-  mutate(Logo = "https://investidor10.com.br/storage/investment_advice/2BoSLNVozMWVwaQjH1gbZvC4fdnFCzI0KdmvaTMa.jpg") %>% 
-  select(-secao) %>% 
-  relocate(Logo) %>% 
-  relocate(insituicao,.after = Logo) %>% 
+dados_cv %>%
+  dplyr::filter(secao == "profissional") %>%
+  select(-secao,-Intituição) %>%
   gt::gt() %>%
-  gtExtras::gt_img_rows(columns = Logo) %>% 
-  gt::cols_label(
-    Logo = ""
+  gt::tab_header(
+    title = gtExtras::img_header(
+      img_url = "https://investidor10.com.br/storage/investment_advice/2BoSLNVozMWVwaQjH1gbZvC4fdnFCzI0KdmvaTMa.jpg",
+                                 label = gt::md("RD Investimentos"))
   ) %>% 
   gt::tab_options(table.width = gt::pct(100)) %>% 
-  gt::cols_width(insituicao ~ gt::pct(25),
-                 Logo ~ gt::pct(8)) 
-  
+  espnscrapeR::gt_theme_538()
+
 
 # create_section(cv, "working_experience")
 ```
+
+
+
 
 ## <i class="fa-solid fa-graduation-cap"></i> Education
 

@@ -1,4 +1,4 @@
-secao;titulo;local;insituicao;inicio;fim;descricao
+secao;Função;Local;Intituição;Inicio;Fim;Descrição
 profissional;Head Operacional;Natal, RN;7RD Investimentos;2018;;Líder Operacional
-profissional;BI;Natal, RN;7RD Investimentos;2018;2020;Líder Operacional
-;;;;;;
+profissional;BI;Natal, RN;7RD Investimentos;2018;2020;Desenvolvi ferramentas de BI na empresa, proporcionando dados para gestores e assessores por meio de dashboards. Criei um sistema eficiente para calcular comissões e desenvolvi robôs automatizando rotinas administrativas. Simultaneamente, atuei como auxiliar de um operador de renda variável.
+profissional;Operador de Renda variável;Natal, RN;7RD Investimentos;mar/22;mar/22;Atuava na mesa de renda variável do escritório, auxiliando na montagem das carteiras recomendadas pelas pesquisas. Desenvolvi uma ferramenta para realizar trocas de carteiras, que automaticamente gerava baskets com cálculos de saldos financeiros e a correção de corretagem. O objetivo era evitar que o cliente ficasse com saldo negativo em sua conta.
