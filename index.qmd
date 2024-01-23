@@ -4,7 +4,6 @@ format:
   html:
     theme: journal
     css: custom.css
-    title: "Curriculo"
 editor: visual
 knitr:
   opts_chunk: 
@@ -35,13 +34,18 @@ dados_cv <- read_delim("dados_cv.csv", delim = ";",
 
 </span> Olá, eu sou o **Lemuel!** Atualmente, exerço a função de **líder operacional** (Head Operacional) em um escritório de assessoria de investimentos. Na prática, isso significa que sou responsável por uma equipe de duas pessoas no **backoffice** e encarregado de gerenciar os dados, desde o [ETL]{style="text-decoration: underline;"} até o processo de transformar números em [relatórios]{style="text-decoration: underline;"} nos mais diversos [formatos]{style="text-decoration: underline;"}. Se precisar de alguém para dar um toque de criatividade nos dados e se tornar seu **faxineiro de dados (data janitor)**, estou aqui!
 
-### Languages
+### Idiomas
 
-**Portuguese:** Native <br> **English:** Proficient
+**Portuguese:** Nativo <br> **English:** Proficiente
 
-### Programming skills
+### Linguagens e Ferramentas
 
 <i class="fab fa-r-project"></i> `R / tidyverse / Shiny / Plumber / RMarkdown / Quarto` <br> <i class="fab fa-github"></i> `GitHub` <br> <i class="fab fa-python"></i> `Python / Selenium / Pandas / Streamlit` <br> <i class="fab fa-aws"></i> `AWS` <br>
+
+### Formação Acadêmica
+-**Ciências Econômicas** <br> Local: **UFRN 2010 - 2015** <br>
+-**Mestrado Economia** <br> Local: **UFRN 2016 - 2017** <br>
+-**Doutorado Finanças** <br> Local: **UFRN 2018 - 2023**
 :::
 
 ::: {.column width="2%"}
@@ -50,92 +54,38 @@ dados_cv <- read_delim("dados_cv.csv", delim = ";",
 ::: {.column width="68%"}
 <!-- Functions -->
 
-```{r}
-col_br <- function(col){
-    dplyr::if_else(
-      !is.na(col) & col != "N/A|NA", 
-      paste0(col, ""),
-      ""
-    )
-}
-
-col_br_loc <- function(col){
-    dplyr::if_else(
-      !is.na(col) & col != "N/A|NA", 
-      paste0('<br><i class="fa-solid fa-location-dot"></i> ', col),
-      ""
-    )
-}
-
-create_section <- function(cv_data, section_name){
-  cv_data |>
-    dplyr::mutate(in_resume = as.character(in_resume),
-                  end = tidyr::replace_na(end, 9999),
-                  loc = dplyr::if_else(loc == "Online", NA_character_, loc)) |>
-    dplyr::filter(in_resume %in% c("TRUE", "VERDADEIRO"), section == section_name) |>
-    dplyr::select(section:description_1) |>
-    dplyr::arrange(desc(end), desc(start)) |>
-    dplyr::mutate(
-      date =
-        dplyr::case_when(
-          end == 9999 ~ glue::glue("Current <br> | <br> {start}"),
-          end != start ~ glue::glue("{end} <br> | <br> {start}"),
-          end == start ~ glue::glue("{end}"),
-          TRUE ~ ""
-        ) ,
-      .before = everything()
-    ) |>
-    dplyr::mutate(
-      main_text =
-        glue::glue(
-          "**{title}** <br> {col_br(institution)} {col_br(description_1)} {col_br_loc(loc)}"),
-      .after = date
-    ) |>
-    dplyr::select(-c(start, end, section, title, institution, loc, description_1)) |>
-    gt::gt() |>
-    gt::fmt_markdown(columns = c(date, main_text)) |> 
-    gt::tab_options(column_labels.hidden = TRUE, table.width = gt::pct(100)) |> 
-    gt::cols_align(align = "left", columns = main_text) |> 
-    gt::cols_width(date ~ gt::pct(10))
-}
-```
-
 <!-- Main content -->
-
 # Lemuel de Lemos Romão
-
 ## <i class="fa-solid fa-suitcase"></i> Experiência Profissional
 
 ```{r}
-dados_cv %>%
-  dplyr::filter(secao == "profissional") %>%
-  select(-secao,-Intituição) %>%
-  gt::gt() %>%
-  gt::tab_header(
-    title = gtExtras::img_header(
-      img_url = "https://investidor10.com.br/storage/investment_advice/2BoSLNVozMWVwaQjH1gbZvC4fdnFCzI0KdmvaTMa.jpg",
-                                 label = gt::md("RD Investimentos"))
-  ) %>% 
-  gt::tab_options(table.width = gt::pct(100)) %>% 
-  espnscrapeR::gt_theme_538()
+
+tbl_experiencia <- function(dados_cv,intituicao){
+  dados_cv %>%
+    dplyr::filter(secao == "profissional") %>%
+    dplyr::filter(Intituição == intituicao) %>%
+    select(-secao,-Intituição) %>%
+    gt::gt() %>%
+    gt::tab_header(
+      title = gt::md(paste0("**",intituicao,"**"))
+    ) %>% 
+    gt::tab_options(table.width = gt::pct(100)) %>% 
+    espnscrapeR::gt_theme_538()
+}
+
+lapply(unique(dados_cv$Intituição),function(intituicao){
+  tbl_experiencia(dados_cv,intituicao) %>% 
+    gt::as_raw_html()
+}) -> lista_experiencia
+
+purrr::map(lista_experiencia,htmltools::HTML) %>% 
+  htmltools::tagList()
 
 
-# create_section(cv, "working_experience")
-```
-
-
-
-
-## <i class="fa-solid fa-graduation-cap"></i> Education
-
-```{r}
-# create_section(cv, "education")
 ```
 
 <p class="small">
-
 Currículo feito com o [Quarto](https://quarto.org/). Última Atualização em `r format.Date(Sys.Date(), "%b %d, %Y")`. <br> Código Disponível em <i class="fa-brands fa-github"></i> [GitHub](https://github.com/lemuelemos/cv/blob/main/index.qmd). <br> License: [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/).
-
 </p>
 :::
 :::
