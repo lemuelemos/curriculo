@@ -17,7 +17,6 @@ knitr:
 #| cache: false
 library(readr)
 library(dplyr)
-library(bs4Dash)
 library(shiny)
 dados_cv <- read_delim("dados_cv.csv", delim = ";", 
                        escape_double = FALSE, locale = locale(encoding = "WINDOWS-1252"), 
@@ -65,7 +64,7 @@ tbl_experiencia <- function(dados_cv,intituicao){
     dplyr::filter(secao == "profissional") %>%
     dplyr::filter(Intituição == intituicao) %>%
     select(-secao,-Intituição) %>%
-    gt::gt() %>%
+    gt::gt(janitor::make_clean_names(intituicao)) %>%
     gt::tab_header(
       title = gt::md(paste0("**",intituicao,"**"))
     ) %>% 
